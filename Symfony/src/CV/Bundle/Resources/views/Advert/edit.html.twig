@@ -1,0 +1,26 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+
+{% block title %}
+  Modifier un CV - {{ parent() }}
+{% endblock %}
+
+{% block Site_body %}
+
+  <h2>Modifier un CV</h2>
+
+  {{ include("SiteBundle:CV:form.html.twig") }}
+
+  <p>
+    Vous éditez un CV déjà existant, merci de ne pas changer
+    l'esprit générale du CV.
+  </p>
+
+  <p>
+    <a href="{{ path('Site_view', {'id': advert.getId()}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au CV
+    </a>
+  </p>
+
+{% endblock %}

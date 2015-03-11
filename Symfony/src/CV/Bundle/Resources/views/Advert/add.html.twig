@@ -1,0 +1,24 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un CV - {{ parent() }}
+{% endblock %}
+
+{% block Site_body %}
+
+  <h2>Modifier un CV</h2>
+
+  {{ include("SiteBundle:CV:form.html.twig") }}
+
+  <p>
+    Vous ajoutez un CV.
+  </p>
+
+  <p>
+    <a href="{{ path('Site_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'accueil
+    </a>
+  </p>
+
+{% endblock %}

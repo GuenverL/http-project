@@ -1,0 +1,29 @@
+
+CV_home:
+    path:      /{page}
+    defaults:  { _controller: CVBundle:CV:index, page: 1 }
+    requirements:
+        page: \d*
+
+CV_view:
+    path:      /advert/{id}
+    defaults:  { _controller: CVBundle:CV:view }
+    requirements:
+        id: \d+
+
+CV_add:
+    path:      /add
+    defaults:  { _controller: CVBundle:CV:add }
+
+CV_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: CVBundle:CV:edit }
+    requirements:
+        id: \d+
+
+CV_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: CVBundle:CV:delete }
+    requirements:
+        id: \d+
+

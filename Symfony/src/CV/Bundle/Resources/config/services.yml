@@ -1,0 +1,4 @@
+services:
+    cv.antispam:
+        class: CV\Bundle\Antispam\CVAntispam
+        arguments: [@mailer, %locale%, 50]
