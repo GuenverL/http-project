@@ -1,0 +1,9 @@
+<ul class="nav nav-pills nav-stacked">
+  {% for cv in listCVs %}
+    <li>
+      <a href="{{ path('CV_view', {'id': cv.id}) }}">
+         {{ cv.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

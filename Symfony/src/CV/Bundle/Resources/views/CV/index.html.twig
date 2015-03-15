@@ -1,0 +1,25 @@
+{% extends "CVBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block site_body %}
+
+  <h2>Liste des annonces</h2>
+
+  <ul>
+    {% for cv in listCVs %}
+      <li>
+        <a href="{{ path('CV_view', {'id': cv.id}) }}">
+          {{ cv .title }}
+        </a>
+        par {{ cv.author }},
+        le {{ cv.date|date('d/m/Y') }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'annonces</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

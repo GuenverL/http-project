@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CV
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="ArchiWeb\Bundle\Entity\CVRepository")
+ * @ORM\Entity(repositoryClass="CV\Bundle\Entity\CVRepository")
  */
 class CV
 {
@@ -49,12 +49,7 @@ class CV
      */
     private $author;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="content", type="text")
-     */
-    private $content;
+    private $file;
 
 
 	public function __construct(){
@@ -139,27 +134,14 @@ class CV
         return $this->author;
     }
 
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return CV
-     */
-    public function setContent($content)
+    public function setFile(UploadedFile $file = null)
     {
-        $this->content = $content;
-
-        return $this;
+        $this->File = $file;
     }
 
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
+    public function getFile()
     {
-        return $this->content;
+        return $this->file;
     }
 
     /**

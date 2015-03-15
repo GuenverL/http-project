@@ -1,11 +1,10 @@
 <?php
 
-namespace ArchiWeb\Bundle\Form;
+namespace CV\Bundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use ArchiWeb\Bundle\Form\ImageType;
 
 class CVType extends AbstractType
 {
@@ -19,9 +18,8 @@ class CVType extends AbstractType
       		->add('date',      'date')
       		->add('title',     'text')
       		->add('author',    'text')
-      		->add('content',   'textarea')
+      		->add('file',      'file')
       		->add('published', 'checkbox', array('required' => false))
-      		->add('image',new ImageType())
       		->add('save',      'submit')
         ;
     }
@@ -32,7 +30,7 @@ class CVType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ArchiWeb\Bundle\Entity\CV'
+            'data_class' => 'CV\Bundle\Entity\CV'
         ));
     }
 
@@ -41,6 +39,6 @@ class CVType extends AbstractType
      */
     public function getName()
     {
-        return 'archiweb_bundle_cv';
+        return 'cv_bundle_cv';
     }
 }

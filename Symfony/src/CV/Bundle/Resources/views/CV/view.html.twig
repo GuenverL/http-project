@@ -1,0 +1,31 @@
+{% extends "CVBundle::layout.html.twig" %}
+
+{% block title %}
+  Lecture d'un CV - {{ parent() }}
+{% endblock %}
+
+{% block Site_body %}
+
+  <h2>{{ cv.title }}</h2>
+  <i>Par {{ cv.author }}, le {{ cv.date|date('d/m/Y') }}</i>
+
+  <div class="well">
+    {{ cv.content }}
+  </div>
+
+  <p>
+    <a href="{{ path('CV_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    <a href="{{ path('CV_edit', {'id': cv.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier le CV
+    </a>
+    <a href="{{ path('CV_delete', {'id': cv.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le CV
+    </a>
+  </p>
+
+{% endblock %}

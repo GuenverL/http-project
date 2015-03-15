@@ -1,6 +1,6 @@
 <?php
 
-namespace ArchiWeb\Bundle\Controller;
+namespace CV\Bundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,7 +41,7 @@ class CVController extends Controller
         'date'    => new \Datetime())
     );
     
-    return $this->render('SiteBundle:CV:index.html.twig', array(
+    return $this->render('CVBundle:CV:index.html.twig', array(
       'listCVs' => $listCVs
     ));
 
@@ -52,7 +52,7 @@ class CVController extends Controller
     $cv = new CV;
     $cv->setContent("Recherche développeur Symfony2.");
 	
-    return $this->render('SiteBundle:CV:view.html.twig', array(
+    return $this->render('CVBundle:CV:view.html.twig', array(
       'cv' => $cv
     ));
   }
@@ -69,10 +69,10 @@ class CVController extends Controller
     	
     	$request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
     	
-    	return $this->redirect($this->generateUrl('Site_view', array('id' => $cv->getId())));
+    	return $this->redirect($this->generateUrl('CV_view', array('id' => $cv->getId())));
     }
     
-    return $this->render('SiteBundle:CV:add.html.twig', array(
+    return $this->render('CVBundle:CV:add.html.twig', array(
       	'form' => $form->createView(),
     ));
   }
@@ -87,7 +87,7 @@ class CVController extends Controller
       'date'    => new \Datetime()
     );
 
-    return $this->render('SiteBundle:CV:edit.html.twig', array(
+    return $this->render('CVBundle:CV:edit.html.twig', array(
       'cv' => $cv
     ));
   }
@@ -95,7 +95,7 @@ class CVController extends Controller
   public function deleteAction($id)
   {
 
-    return $this->render('SiteBundle:CV:delete.html.twig');
+    return $this->render('CVBundle:CV:delete.html.twig');
   }
   
   public function menuAction()
@@ -108,7 +108,7 @@ class CVController extends Controller
       array('id' => 9, 'title' => 'Offre de stage webdesigner')
     );
 
-    return $this->render('SiteBundle:CV:menu.html.twig', array(
+    return $this->render('CVBundle:CV:menu.html.twig', array(
       // Tout l'intérêt est ici : le contrôleur passe
       // les variables nécessaires au template !
       'listCVs' => $listCVs

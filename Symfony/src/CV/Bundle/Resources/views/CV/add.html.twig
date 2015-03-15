@@ -1,0 +1,24 @@
+{% extends "CVBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un CV - {{ parent() }}
+{% endblock %}
+
+{% block CV_body %}
+
+  <h2>Ajouter un CV</h2>
+
+  {{ include("CVBundle:CV:form.html.twig") }}
+
+  <p>
+    Vous ajoutez un CV.
+  </p>
+
+  <p>
+    <a href="{{ path('CV_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'accueil
+    </a>
+  </p>
+
+{% endblock %}

@@ -6,7 +6,7 @@ CV_home:
         page: \d*
 
 CV_view:
-    path:      /advert/{id}
+    path:      /cv/{id}
     defaults:  { _controller: CVBundle:CV:view }
     requirements:
         id: \d+

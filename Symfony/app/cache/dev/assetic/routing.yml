@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /info/etu/etuic2/l3spi/spi3021/Documents/archiweb/Symfony/app/config/routing_dev.yml
+    resource: 'C:\GitHub\http-project\Symfony\app/config/routing_dev.yml'
