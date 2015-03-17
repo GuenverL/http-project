@@ -45,10 +45,11 @@ class CVController extends Controller
         'page'    => $page
         ));
     }
-/**
- * @ParamConverter("advert", options={"mapping": {"advert_id": "id"}})
- */
-    public function viewAction(Advert $advert, $id)
+
+    /**
+    * @ParamConverter("cv", options={"mapping": {"cv_id": "id"}})
+    */
+    public function viewAction(CV $cv, $id)
     {
     /*$em = $this->getDoctrine()->getManager();
 
@@ -161,6 +162,6 @@ class CVController extends Controller
     /**
     * @ParamConverter("date", options={"format": "Y-m-d"})
     */
-    public function viewListAction(\Datetime $date)
+    public function viewListAction(\Datetime $date){}
 
 }
