@@ -3,7 +3,7 @@
 namespace CV\Bundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class CVEditType extends AbstractType
 {
@@ -13,8 +13,7 @@ class CVEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-      		->remove('date');
+        $builder->remove('date');
     }
 
     /**

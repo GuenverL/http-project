@@ -1,4 +1,20 @@
+cv_user:
+    resource: "@CVUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
 cv:
     resource: "@CVBundle/Resources/config/routing.yml"
     prefix:   /CV
+
+login:
+    pattern:   /login
+    defaults:  { _controller: CVUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
 

@@ -4,13 +4,12 @@
   Lecture d'un CV - {{ parent() }}
 {% endblock %}
 
-{% block Site_body %}
+{% block CV_body %}
 
-  <h2>{{ cv.title }}</h2>
-  <i>Par {{ cv.author }}, le {{ cv.date|date('d/m/Y') }}</i>
+  <i>Ajouté par {{ cv.author }}, le {{ cv.date|date('d/m/Y') }}</i>
 
   <div class="well">
-    {{ cv.content }}
+    {{ "rien" }}
   </div>
 
   <p>
@@ -27,5 +26,8 @@
       Supprimer le CV
     </a>
   </p>
-
+    <img
+        src="{{ asset(cv.image.webPath) }}"
+        alt="{{ cv.image.alt }}"
+    />
 {% endblock %}

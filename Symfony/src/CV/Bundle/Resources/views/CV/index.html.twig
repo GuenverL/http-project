@@ -1,20 +1,18 @@
 {% extends "CVBundle::layout.html.twig" %}
-
 {% block title %}
-  Accueil - {{ parent() }}
+Accueil - {{ parent() }}
 {% endblock %}
 
-{% block site_body %}
+{% block CV_body %}
+<h2>Liste des annonces</h2>
 
-  <h2>Liste des annonces</h2>
-
-  <ul>
+<ul>
     {% for cv in listCVs %}
       <li>
         <a href="{{ path('CV_view', {'id': cv.id}) }}">
-          {{ cv .title }}
+          {{ "titre" }}
         </a>
-        par {{ cv.author }},
+        par {{ "moi" }},
         le {{ cv.date|date('d/m/Y') }}
       </li>
     {% else %}
@@ -22,4 +20,11 @@
     {% endfor %}
   </ul>
 
+<ul class="pagination">
+    {% for p in range(1, nbPages) %}
+        <li{% if p == page %}class="active"{% endif %}>
+                <a href="{{ path('CV_home', {'page': p}) }}">{{ p }}</a>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

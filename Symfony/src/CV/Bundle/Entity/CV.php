@@ -2,7 +2,10 @@
 
 namespace CV\Bundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CV
@@ -19,37 +22,36 @@ class CV
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;  
-    
+    private $id;
+
     /**
-    * @var boolean
-    *
-  	* @ORM\Column(name="published", type="boolean")
-  	*/
-  	private $published = true;
+    * @ORM\Column(name="author", type="string", length=255)
+    * @Assert\Length(min=2)
+    */
+    private $author;
 
     /**
      * @var \DateTime
 	 *	
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\DateTime()
      */
     private $date;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     */
-    private $title;
+    * @ORM\OneToOne(targetEntity="CV\Bundle\Entity\Image", cascade={"persist", "remove"})
+    * @Assert\Valid()
+    *
+    *
+    *    */
+    private $image;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
+    * @ORM\ManyToMany(targetEntity="CV\Bundle\Entity\Domaine", cascade={"persist"})
+    */
+    private $domaines;
 
-    private $file;
+
 
 
 	public function __construct(){
@@ -88,27 +90,41 @@ class CV
         return $this->date;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return CV
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
 
+
+
+    public function addDomaine(Domaine $domaine)
+    {
+        $this->domaines[] = $domaine;
+        return $this;
+    }
+
+    public function removeDomaine(Domaine $domaine)
+    {
+        $this->domaines->removeElement($domaine);
+    }
+
+    public function getDomaines()
+    {
+        return $this->domaines;
+    }
+
+    /**
+    * @param Image $image
+    * @return Advert
+    */
+    public function setImage(Image $image = null)
+    {
+        $this->image = $image;
         return $this;
     }
 
     /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
+   * @return Image
+   */
+    public function getImage()
     {
-        return $this->title;
+        return $this->image;
     }
 
     /**
@@ -120,7 +136,7 @@ class CV
     public function setAuthor($author)
     {
         $this->author = $author;
-
+    
         return $this;
     }
 
@@ -132,38 +148,5 @@ class CV
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->File = $file;
-    }
-
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published
-     * @return CV
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean 
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 }

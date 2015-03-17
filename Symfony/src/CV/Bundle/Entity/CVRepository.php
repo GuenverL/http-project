@@ -1,8 +1,9 @@
 <?php
 
-namespace ArchiWeb\Bundle\Entity;
+namespace CV\Bundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * CVRepository
@@ -12,4 +13,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class CVRepository extends EntityRepository
 {
+  public function getCVs($page,$nbPerPage)
+  {
+    $query = $this->createQueryBuilder('a')
+        ->leftJoin('a.image', 'i')
+        ->addSelect('i')
+        ->leftJoin('a.domaines', 'c')
+        ->addSelect('c')
+        ->orderBy('a.date', 'DESC')
+        ->getQuery()
+    ;
+
+    $query
+        ->setFirstResult(($page-1) * $nbPerPage)
+        ->setMaxResults($nbPerPage)
+    ;
+
+    return new Paginator($query, true);
+  }
 }

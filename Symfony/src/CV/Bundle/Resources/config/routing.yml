@@ -6,10 +6,10 @@ CV_home:
         page: \d*
 
 CV_view:
-    path:      /cv/{id}
+    path:      /cv/{cv_id}
     defaults:  { _controller: CVBundle:CV:view }
     requirements:
-        id: \d+
+        cvid: \d+
 
 CV_add:
     path:      /add
@@ -27,3 +27,6 @@ CV_delete:
     requirements:
         id: \d+
 
+CV_list:
+    path:      /list/{date}
+    defaults:  { _controller: CVBundle:CV:viewList }
