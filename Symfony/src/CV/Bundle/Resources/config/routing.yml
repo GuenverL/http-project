@@ -1,12 +1,12 @@
 
 CV_home:
-    path:      /{page}
+    path:      /
     defaults:  { _controller: CVBundle:CV:index, page: 1 }
     requirements:
         page: \d*
 
 CV_view:
-    path:      /cv/{cv_id}
+    path:      /cv/{id}
     defaults:  { _controller: CVBundle:CV:view }
     requirements:
         cvid: \d+

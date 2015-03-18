@@ -10,9 +10,9 @@ Accueil - {{ parent() }}
     {% for cv in listCVs %}
       <li>
         <a href="{{ path('CV_view', {'id': cv.id}) }}">
-          {{ "titre" }}
+        CV
         </a>
-        par {{ "moi" }},
+        Ajouté par {{ "moi" }},
         le {{ cv.date|date('d/m/Y') }}
       </li>
     {% else %}

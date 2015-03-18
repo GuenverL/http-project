@@ -15,10 +15,10 @@ class CVType extends AbstractType
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {   	
+		
         $builder
       		->add('date',       'date')
-            ->add('author',     'text')
       		->add('image',      new ImageType())
             ->add('domaines',   'entity', array(
                 'class'     =>  'CVBundle:Domaine',

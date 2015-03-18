@@ -46,11 +46,22 @@ class CVController extends Controller
         ));
     }
 
-    /**
-    * @ParamConverter("cv", options={"mapping": {"cv_id": "id"}})
-    */
     public function viewAction(CV $cv, $id)
     {
+    $em = $this->getDoctrine()->getManager();
+
+    $cv = $em->getRepository('CVBundle:CV')->find($id);
+
+    if ($cv === null) {
+      throw $this->createNotFoundException("Le CV d'id ".$id." n'existe pas.");
+    }
+
+    $listCVsDomaines = $em->getRepository('CVBundle:CVDomaine')->findByCv($cv);
+
+    return $this->render('CVBundle:CV:view.html.twig', array(
+      'cv'           => $cv,
+      'listCVsDomaines' => $listCVsDomaines,
+    ));
 
     }
 
@@ -63,7 +74,11 @@ class CVController extends Controller
    	$form = $this->createForm(new CVType(), $cv);
    	
     if ($form->handleRequest($request)->isValid()) {
+    
         $cv->getImage()->upload();
+        $user = $this->getUser();
+        $cv->setAuthor($user);
+        
     	$em = $this->getDoctrine()->getManager();
     	$em->persist($cv);
     	$em->flush();

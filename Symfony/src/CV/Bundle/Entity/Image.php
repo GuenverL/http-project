@@ -120,6 +120,6 @@ class Image
   }
 
   public function getWebPath(){
-    return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
+    return $this->getUploadDir().'/'.$this->getUrl();
   }
 }
