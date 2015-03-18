@@ -8,15 +8,8 @@ cv:
     resource: "@CVBundle/Resources/config/routing.yml"
     prefix:   /CV
 
-login:
-    pattern:   /login
-    defaults:  { _controller: CVUserBundle:Security:login }
 
-login_check:
-    pattern:   /login_check
 
-logout:
-    pattern:   /logout
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

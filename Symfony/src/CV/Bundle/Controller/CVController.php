@@ -51,20 +51,7 @@ class CVController extends Controller
     */
     public function viewAction(CV $cv, $id)
     {
-    /*$em = $this->getDoctrine()->getManager();
 
-    $cv = $em->getRepository('CVBundle:CV')->find($id);
-
-    if ($cv === null) {
-      throw $this->createNotFoundException("Le CV d'id ".$id." n'existe pas.");
-    }
-
-    $listCVDomaines = $em->getRepository('CVBundle:CVDomaine')->findByCv($cv);
-
-    return $this->render('CVBundle:CV:view.html.twig', array(
-      'cv'           => $cv,
-      'listCVDomaines' => $listCVDomaines,
-    ));  */
     }
 
   /**
