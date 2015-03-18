@@ -1,12 +1,9 @@
-cv_user:
-    resource: "@CVUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
+
 
 
 cv:
     resource: "@CVBundle/Resources/config/routing.yml"
-    prefix:   /CV
+    prefix:   /
 
 
 
